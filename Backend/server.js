@@ -6,10 +6,11 @@ import authRoutes from "./routes/authRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import dbConnection from "./db/dbConnection.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
-const app = express();
+
 const PORT = process.env.PORT;
 
 
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
   res.end("Hello");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   dbConnection();
   console.log(`app is working on port ${PORT}`);
 });
